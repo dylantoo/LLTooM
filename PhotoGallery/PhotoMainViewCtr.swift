@@ -16,13 +16,12 @@ class PhotoMainViewCtr: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
         // Register cell classes
        var nib = UINib(nibName:"PhotoCell", bundle:nil)
        self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
 //        self.collectionView?.registerClass(PhotoCell.classForCoder(), forCellWithReuseIdentifier: reuseIdentifier)
+        
+        self.collectionView?.addLTHeadRefreshView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,18 +29,9 @@ class PhotoMainViewCtr: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }

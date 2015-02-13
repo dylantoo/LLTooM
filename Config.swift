@@ -8,5 +8,5 @@
 
 import Foundation
 
-let Photo_Width = 90.0
-let Photo_Height = 120.0
+let Photo_Width:CFloat = 90.0
+let Photo_Height:CFloat = 120.0
