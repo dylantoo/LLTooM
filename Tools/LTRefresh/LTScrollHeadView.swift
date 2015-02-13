@@ -18,8 +18,10 @@ class LTScrollHeadView: UIView {
         lblTitle = UILabel(frame: frame)
         lblTitle.font = UIFont.systemFontOfSize(20)
         lblTitle.textColor = UIColor.redColor()
-        lblTitle.text = LTRefreshHeadTitle
-//        lblTitle.textAlignment = NSTextAlignmentLeft
+        var manager:PhotoManager = PhotoManager()
+        lblTitle.text = PhotoManager.headTitleForPhotoGallery()
+        
+        lblTitle.textAlignment = NSTextAlignment.Center
         self.addSubview(lblTitle)
     }
 

@@ -11,8 +11,6 @@ let reuseIdentifier = "PhotoCellIdentifier"
 
 class PhotoMainViewCtr: UICollectionViewController {
     
-    var photoManager = PhotoManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,13 +36,13 @@ class PhotoMainViewCtr: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoManager.numberOfPhotos()
+        return PhotoManager.numberOfPhotos()
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell : PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as PhotoCell
         cell.backgroundColor = UIColor.lightGrayColor()
-        cell.photoImgview = UIImageView(image: photoManager.imageAtIndexInPhotos(currentImageIndex: indexPath.row))
+        cell.photoImgview = UIImageView(image: PhotoManager.imageAtIndexInPhotos(currentImageIndex: indexPath.row))
         return cell
     }
 

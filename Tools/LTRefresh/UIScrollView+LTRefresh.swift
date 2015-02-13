@@ -10,7 +10,7 @@ import UIKit
 
 extension UIScrollView {
     func addLTHeadRefreshView() {
-        var headview = LTScrollHeadView(frame: CGRectMake(0, -20, self.frame.size.width, LTRefreshViewHeight))
+        var headview = LTScrollHeadView(frame: CGRectMake(0, -22, self.frame.size.width, LTRefreshViewHeight))
         self.addSubview(headview)
     }
 }
