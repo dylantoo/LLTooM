@@ -27,31 +27,29 @@ class PhotoManager: NSObject {
         var beginString:NSString = "2014-01-01 00:00"
         var beginDate:NSDate = beginString.dateFromFormateString("")
         var interval:NSTimeInterval = NSDate().timeIntervalSinceDate(beginDate)
-        
-        
-        
-        //return "共\(interval)秒"
-        
 
-        var year:NSTimeInterval = interval / (365*24*60*60)
-        var month:NSTimeInterval = (interval - 365*24*60*60*year)/(30*24*60*60)
-        var day:NSTimeInterval = (interval-365*24*60*60*year-30*24*60*60*month)/(24*60*60)
-        var hour:NSTimeInterval = (interval-365*24*60*60*year-30*24*60*60*month-24*60*60*day)/(60*60)
-        var min:NSTimeInterval = (interval-365*24*60*60*year-30*24*60*60*month-24*60*60*day-60*60*hour)/60
-        var second:NSTimeInterval = interval-365*24*60*60*year-30*24*60*60*month-24*60*60*day-60*60*hour-60*min
         
-        return "Passed \(Int(year))Year \(Int(month))Month \(Int(day))Day \(Int(hour))Hour \(Int(min))Min \(Int(second))Sec "
+        var gregorian:NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)!
         
-/*        var i:NSTimeInterval = interval-year*365
+        var unitFlags:NSCalendarUnit = NSCalendarUnit(UInt.max)
+        var beginComponents:NSDateComponents = gregorian.components(unitFlags, fromDate: beginDate)
+        var endComponents:NSDateComponents = gregorian.components(unitFlags, fromDate: NSDate())
         
-        var mont = Int((interval-365*year)/30)
-        var day:Int = Int((interval-365*year-30*mont)/24)
-        var hour:Int = Int((interval-365*year-30*mont-24*day)/60)
-        var min:Int = Int((interval-365*year-30*mont-24*day-60*hour)/60)
-        var second:Int = Int(interval-365*year-30*mont-24*day-60*hour-60*min)
-        
-        return "Passed "+year+"Year "+mont+"Month "+day+"Day "+hour+"Hour "+min+"Min "+second+"Sec"
-*/
+        var begin_year:Int = beginComponents.year
+        var begin_month:Int = beginComponents.month
+        var begin_day:Int = beginComponents.day
+        var begin_hour:Int = beginComponents.hour
+        var begin_min:Int = beginComponents.minute
+        var begin_sec:Int = beginComponents.second
+
+        var end_year:Int = endComponents.year
+        var end_month:Int = endComponents.month
+        var end_day:Int = endComponents.day
+        var end_hour:Int = endComponents.hour
+        var end_min:Int = endComponents.minute
+        var end_sec:Int = endComponents.second
+      
+        return "Passed \(end_year-begin_year)Year \(end_month-begin_month)Month \(end_day-begin_day)Day \(end_hour-begin_hour)Hour \(end_min-begin_min)Min \(end_sec-begin_sec)Sec "
     }
     
 }
