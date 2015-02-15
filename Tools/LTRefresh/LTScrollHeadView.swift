@@ -16,7 +16,7 @@ class LTScrollHeadView: UIView {
         super.init(frame: frame)
         
         lblTitle = UILabel(frame: frame)
-        lblTitle.font = UIFont.systemFontOfSize(20)
+        lblTitle.font = UIFont.systemFontOfSize(14)
         lblTitle.textColor = UIColor.redColor()
         var manager:PhotoManager = PhotoManager()
         lblTitle.text = PhotoManager.headTitleForPhotoGallery()

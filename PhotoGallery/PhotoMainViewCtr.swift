@@ -17,9 +17,10 @@ class PhotoMainViewCtr: UICollectionViewController {
         // Register cell classes
        var nib = UINib(nibName:"PhotoCell", bundle:nil)
        self.collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
-//        self.collectionView?.registerClass(PhotoCell.classForCoder(), forCellWithReuseIdentifier: reuseIdentifier)
         
         self.collectionView?.addLTHeadRefreshView()
+        
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"refreshLTScrollHeadView", userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +28,10 @@ class PhotoMainViewCtr: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
+    // MARK: Private Methods
+    func refreshLTScrollHeadView() {
+        self.collectionView?.updateLTHeadRefreshViewTitle(headviewTitle: PhotoManager.headTitleForPhotoGallery())
+    }
 
     // MARK: UICollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

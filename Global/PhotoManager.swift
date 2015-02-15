@@ -30,11 +30,19 @@ class PhotoManager: NSObject {
         
         
         
-        return "共\(interval)秒"
+        //return "共\(interval)秒"
         
-        /*
-        var year = Int(interval / 365)
-        var i:NSTimeInterval = interval-year*365
+
+        var year:NSTimeInterval = interval / (365*24*60*60)
+        var month:NSTimeInterval = (interval - 365*24*60*60*year)/(30*24*60*60)
+        var day:NSTimeInterval = (interval-365*24*60*60*year-30*24*60*60*month)/(24*60*60)
+        var hour:NSTimeInterval = (interval-365*24*60*60*year-30*24*60*60*month-24*60*60*day)/(60*60)
+        var min:NSTimeInterval = (interval-365*24*60*60*year-30*24*60*60*month-24*60*60*day-60*60*hour)/60
+        var second:NSTimeInterval = interval-365*24*60*60*year-30*24*60*60*month-24*60*60*day-60*60*hour-60*min
+        
+        return "Passed \(Int(year))Year \(Int(month))Month \(Int(day))Day \(Int(hour))Hour \(Int(min))Min \(Int(second))Sec "
+        
+/*        var i:NSTimeInterval = interval-year*365
         
         var mont = Int((interval-365*year)/30)
         var day:Int = Int((interval-365*year-30*mont)/24)
