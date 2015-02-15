@@ -46,7 +46,10 @@ class PhotoMainViewCtr: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell : PhotoCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as PhotoCell
         cell.backgroundColor = UIColor.lightGrayColor()
-        cell.photoImgview = UIImageView(image: PhotoManager.imageAtIndexInPhotos(currentImageIndex: indexPath.row))
+        //
+//        cell.photoImgview = UIImageView(image:PhotoManager.imageAtIndexInPhotos(currentImageIndex: indexPath.row))
+        cell.photoImgview?.imageCacheForUrl("http://www.topit.me/album/1307679/item/23168788")
+        cell.photoImgview?.printSomething()
         return cell
     }
 
